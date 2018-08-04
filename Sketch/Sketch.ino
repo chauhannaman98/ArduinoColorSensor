@@ -71,13 +71,6 @@ void loop() {
   bColorStrength = pulseWidth/400. -1;
   bColorStrength = (255 - bColorStrength);
 
-  //Printing the color strengths
-  Serial.print(rColorStrength);
-  Serial.print("  , ");
-  Serial.print(gColorStrength);
-  Serial.print("  , ");
-  Serial.println(bColorStrength);
-  Serial.println("");
 
   //color amplifying
   if (rColorStrength>gColorStrength && gColorStrength>bColorStrength) {
@@ -116,6 +109,15 @@ void loop() {
     rColorStrength = 0;
   }
 
+  //Printing the color strengths
+  Serial.print(rColorStrength);
+  Serial.print("  , ");
+  Serial.print(gColorStrength);
+  Serial.print("  , ");
+  Serial.println(bColorStrength);
+  Serial.println("");
+
+  //sending output to the LEDs
   analogWrite(redPin, rColorStrength);
   analogWrite(greenPin, gColorStrength);
   analogWrite(bluePin, bColorStrength);
