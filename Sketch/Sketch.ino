@@ -71,10 +71,32 @@ void loop() {
   bColorStrength = pulseWidth/400. -1;
   bColorStrength = (255 - bColorStrength);
 
+  //Printing the color strengths
   Serial.print(rColorStrength);
   Serial.print("  , ");
   Serial.print(gColorStrength);
   Serial.print("  , ");
-  Serial.println(bColorSterngth);
+  Serial.println(bColorStrength);
   Serial.println("");
+
+  if (rColorStrength>bColorStrength && rColorStrength>gColorStrength) {
+    digitalWrite(redPin, HIGH);
+    digitalWrite(bluePin, LOW);
+    digitalWrite(greenPin, LOW);
+  }
+
+  if (gColorStrength>bColorStrength && gColorStrength>rColorStrength) {
+    digitalWrite(redPin, LOW);
+    digitalWrite(bluePin, LOW);
+    digitalWrite(greenPin, HIGH);
+  }
+
+  if (bColorStrength>rColorStrength && bColorStrength>gColorStrength) {
+    digitalWrite(redPin, LOW);
+    digitalWrite(bluePin, HIGH);
+    digitalWrite(greenPin, LOW);
+  }
+  
+  delay(250);
+  
 }
