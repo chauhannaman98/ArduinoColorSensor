@@ -79,23 +79,46 @@ void loop() {
   Serial.println(bColorStrength);
   Serial.println("");
 
-  if (rColorStrength>bColorStrength && rColorStrength>gColorStrength) {
-    digitalWrite(redPin, HIGH);
-    digitalWrite(bluePin, LOW);
-    digitalWrite(greenPin, LOW);
+  //color amplifying
+  if (rColorStrength>gColorStrength && gColorStrength>bColorStrength) {
+    rColorStrength = 255;
+    gColorStrength = gColorStrength/2;
+    bColorStrength = 0;
   }
 
-  if (gColorStrength>bColorStrength && gColorStrength>rColorStrength) {
-    digitalWrite(redPin, LOW);
-    digitalWrite(bluePin, LOW);
-    digitalWrite(greenPin, HIGH);
+  if (rColorStrength>bColorStrength && bColorStrength>gColorStrength) {
+    rColorStrength = 255;
+    bColorStrength = bColorStrength/2;
+    gColorStrength = 0;
   }
 
-  if (bColorStrength>rColorStrength && bColorStrength>gColorStrength) {
-    digitalWrite(redPin, LOW);
-    digitalWrite(bluePin, HIGH);
-    digitalWrite(greenPin, LOW);
+  if (gColorStrength>rColorStrength && rColorStrength>bColorStrength) {
+    gColorStrength = 255;
+    rColorStrength = rColorStrength/2;
+    bColorStrength = 0;
   }
+
+  if (gColorStrength>bColorStrength && bColorStrength>rColorStrength) {
+    gColorStrength = 255;
+    bColorStrength = bColorStrength/2;
+    rColorStrength = 0;
+  }
+
+  if (bColorStrength>rColorStrength && rColorStrength>gColorStrength) {
+    bColorStrength = 255;
+    rColorStrength = rColorStrength/2;
+    gColorStrength = 0;
+  }
+
+  if (bColorStrength>gColorStrength && gColorStrength>rColorStrength) {
+    bColorStrength = 255;
+    gColorStrength = gColorStrength/2;
+    rColorStrength = 0;
+  }
+
+  analogWrite(redPin, rColorStrength);
+  analogWrite(greenPin, gColorStrength);
+  analogWrite(bluePin, bColorStrength);
   
   delay(250);
   
