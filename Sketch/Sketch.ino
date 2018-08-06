@@ -9,14 +9,14 @@
 ********************************************************************************/
 
 //RGB pin declarations
-int redPin = 3;
+int redPin = 6;
 int greenPin = 4;
 int bluePin = 5;
 
 //color sensor pin declarations
-int S2 = 7; //color sensor pin S2 to Arduino pin 7
-int S3 = 8; //color sensor pin S3 to Arduino pin 8
-int outPin = 6;   //color sensor out to Arduino pin 4
+int S2 = 0; //color sensor pin S2 to pin 0
+int S3 = 1; //color sensor pin S3 to pin 1
+int outPin = 3;   //color sensor out to Arduino pin 4
 
 unsigned int pulseWidth;
 
